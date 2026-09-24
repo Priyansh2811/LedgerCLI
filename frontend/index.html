@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LedgerCLI — Fast Financial Accounting in Your Terminal</title>
+  <meta name="description" content="Single-binary personal accounting engine. Offline SQLite storage, sub-second query latency, and automated budget thresholds.">
+  <link rel="canonical" href="https://ledgercli.dev/">
+  <meta property="og:title" content="LedgerCLI — Developer-First Expense Tracking">
+  <meta property="og:description" content="Sub-second transaction entry, strict category limits, and CSV portability for developers.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <!-- Minimal Geometric SVG Logo -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="28" rx="6" fill="#18181B"/>
+          <path d="M7 9L12 14L7 19" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="14" y1="19" x2="21" y2="19" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span>Ledger<span style="font-weight:400; color:var(--text-muted);">CLI</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#faq"> FAQ</a>
+        <a href="contact.html">Support</a>
+        <a href="waitlist.html" class="btn btn-outline" style="padding: 0.45rem 0.95rem;">Join Waitlist</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list mono">
+        <li><a href="index.html">ledgercli.dev</a></li>
+        <li>/</li>
+        <li class="current">index</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="container hero-section">
+      
+      
+      <h1 class="hero-title">Financial tracking engineered for the terminal.</h1>
+      <p class="hero-subtitle">
+        Eliminate bloated spreadsheet tabs. Log transactions via natural language in under 400ms, set hard category constraints, and query balances without ever leaving your shell.
+      </p>
+
+      <!-- CTA Above The Fold -->
+      <div class="cta-form-wrap">
+        <form class="inline-form" id="hero-quick-waitlist">
+          <input type="email" id="quick-email" placeholder="Enter work email for binary access..." required>
+          <button type="submit" class="btn btn-primary">Get Access</button>
+        </form>
+
+        <div class="terminal-copy-bar mono">
+          <span>curl -sSL ledgercli.dev/install.sh | bash</span>
+        </div>
+      </div>
+
+      <!-- Clean Terminal Preview Window -->
+      <div class="preview-window">
+        <div class="window-header">
+          <div class="window-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="window-title mono">bash — 80x24</span>
+          <span style="width:36px;"></span>
+        </div>
+        <div class="window-body mono">
+          <p style="color: #94A3B8;">$ tracker quick "450 for team lunch via upi"</p>
+          <p style="color: #34D399; margin: 4px 0 16px;">✔ Logged ₹450.00 under Lunch ("team lunch") via UPI.</p>
+          <p style="color: #94A3B8;">$ tracker budget set -c Lunch -l 3000</p>
+          <p style="color: #34D399; margin: 4px 0 16px;">✔ Monthly budget saved: ₹3,000.00 for Lunch.</p>
+          <p style="color: #94A3B8;">$ tracker list --limit 1</p>
+          <p style="color: #F8FAFC; margin-top: 4px;">ID: 104 | 2026-09-24 | Category: Lunch | Payment: UPI | ₹450.00</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="container section-features" id="features">
+      <div class="features-header">
+        <h1 class="section-title">Built with strict systems principles</h1>
+      </div>
+
+      <div class="grid-3">
+        <article class="feature-box">
+          <div class="feature-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7zM9 9h6M9 13h6M9 17h4"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Local SQLite Storage</h3>
+          <p class="feature-desc">All transaction histories reside solely in your home directory at <code>~/.ledgercli.db</code>. No unencrypted cloud relays, no latency.</p>
+        </article>
+
+        <article class="feature-box">
+          <div class="feature-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Fast Natural Parsing</h3>
+          <p class="feature-desc">Sub-millisecond regex tokenization extracts amount, merchant, and method (UPI, Card, Cash) without dialing remote LLM APIs.</p>
+        </article>
+
+        <article class="feature-box">
+          <div class="feature-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Budget Threshold Alerts</h3>
+          <p class="feature-desc">Real-time delta checks run on every insert, displaying caution banners at 80% usage and hard stops when category ceilings are exceeded.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQs (At least 5) -->
+    <section class="container section-faq" id="faq">
+      <div style="text-align:center;">
+        <h1 class="section-title">Frequently Asked Questions</h1>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>
+            <span>Where is my transaction and balance data stored?</span>
+            <span class="icon">+</span>
+          </summary>
+          <p>Your records are stored locally in an embedded SQLite database at <code>~/.ledgercli.db</code> on your system drive. No financial records ever touch remote networks unless you deliberately run custom export flags.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span>How does the natural language parser process quick inputs?</span>
+            <span class="icon">+</span>
+          </summary>
+          <p>The parser utilizes an internal deterministic regex engine that extracts currency amounts, normalizes descriptors, and detects payment channels (UPI, Card, Cash) offline in less than 2 milliseconds.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span>Can I export data for accounting or tax reporting?</span>
+            <span class="icon">+</span>
+          </summary>
+          <p>Yes. Run <code>tracker export -o expenses.csv</code> to output clean, comma-separated rows fully compliant with Microsoft Excel, Apple Numbers, and Google Sheets.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span>Does this require administrative privileges or network access?</span>
+            <span class="icon">+</span>
+          </summary>
+          <p>No. The binary runs entirely within standard user permissions and functions with zero network dependencies. It works completely offline during flights or disconnected sessions.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span>Which operating systems and shells are supported?</span>
+            <span class="icon">+</span>
+          </summary>
+          <p>LedgerCLI compiles as a standalone executable across macOS (Intel and Apple Silicon), Linux (x86_64, arm64), and Windows (via PowerShell, CMD, or WSL2).</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="brand">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#18181B"/>
+            <path d="M7 9L12 14L7 19" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+            <line x1="14" y1="19" x2="21" y2="19" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <span>LedgerCLI</span>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Overview</a>
+          <a href="waitlist.html">Waitlist</a>
+          <a href="contact.html">Maintainers</a>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <p>© 2026 LedgerCLI Systems. Open source under the MIT License.</p>
+        <p class="mono" style="font-size:0.75rem;">Build By Priyanshu Nautiyal</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent -->
+  <div id="cookie-banner" class="cookie-banner">
+    <p>This site logs anonymous telemetry to verify release downloads. We do not store tracking cookies.</p>
+    <button id="accept-cookie-btn" class="btn btn-primary" style="width:100%; padding:0.4rem;">Acknowledge</button>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById("hero-quick-waitlist").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("quick-email").value;
+      localStorage.setItem("prefill_email", email);
+      window.location.href = "waitlist.html";
+    });
+  </script>
+</body>
+</html>

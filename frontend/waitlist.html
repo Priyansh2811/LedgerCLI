@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Early Access | LedgerCLI</title>
+  <link rel="canonical" href="https://ledgercli.dev/waitlist.html">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="6" fill="#18181B"/>
+          <path d="M7 9L12 14L7 19" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+          <line x1="14" y1="19" x2="21" y2="19" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span>LedgerCLI</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Overview</a>
+        <a href="contact.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list mono">
+        <li><a href="index.html">ledgercli.dev</a></li>
+        <li>/</li>
+        <li class="current">waitlist</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="form-card">
+      <h1 style="font-size:1.75rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:0.5rem;">Register for v2.0 Early Access</h1>
+      <p style="color:var(--text-secondary); font-size:0.875rem; margin-bottom:1.75rem;">
+        Get early build releases containing encrypted cross-terminal syncing and PDF receipt parsing.
+      </p>
+
+      <div id="waitlist-alert" style="display:none; padding:0.75rem; border-radius:var(--radius-sm); font-size:0.85rem; margin-bottom:1.25rem;"></div>
+
+      <form id="waitlist-form">
+        <div class="form-group">
+          <label class="form-label" for="email">Work Email</label>
+          <input type="email" id="email" class="form-input" placeholder="developer@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="role">Primary Engineering Role</label>
+          <select id="role" class="form-input" style="background:#fff;">
+            <option value="software_engineer">Software Engineer / SRE</option>
+            <option value="data_scientist">Data / ML Engineer</option>
+            <option value="student">Student / Researcher</option>
+            <option value="consultant">Independent Consultant</option>
+          </select>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%; margin-top:0.5rem; padding:0.75rem;">
+          Request Access Key
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      <p>© 2026 LedgerCLI Systems.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const prefill = localStorage.getItem("prefill_email");
+      if (prefill) {
+        document.getElementById("email").value = prefill;
+        localStorage.removeItem("prefill_email");
+      }
+    });
+
+    const form = document.getElementById("waitlist-form");
+    const alertBox = document.getElementById("waitlist-alert");
+    const submitBtn = document.getElementById("submit-btn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Processing...";
+
+      const email = document.getElementById("email").value;
+      const role = document.getElementById("role").value;
+
+      try {
+        const res = await fetch(`${API_URL}/api/waitlist`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, role })
+        });
+        if (res.ok) {
+          window.location.href = "thank-you.html";
+        } else {
+          const data = await res.json();
+          alertBox.style.display = "block";
+          alertBox.style.background = "#FEF2F2";
+          alertBox.style.border = "1px solid #FCA5A5";
+          alertBox.style.color = "#991B1B";
+          alertBox.innerText = data.detail || "Submission could not be completed.";
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Request Access Key";
+        }
+      } catch (err) {
+        window.location.href = "thank-you.html";
+      }
+    });
+  </script>
+</body>
+</html>
