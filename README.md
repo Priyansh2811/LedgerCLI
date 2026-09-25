@@ -5,7 +5,6 @@ A complete, production-ready solution featuring:
 2. **Backend API (`backend/`)**: FastAPI server connected to Supabase/PostgreSQL with Row Level Security (RLS) enforcement, validation schemas, and REST endpoints for waitlist, contact submissions, and site analytics telemetry.
 3. **Frontend Web Portal (`frontend/`)**: Modern responsive web application featuring:
    - Sticky navigation bar with unique SVG logo
-   - Dynamic Breadcrumbs
    - Hero section with high-converting CTA above the fold
    - 5+ interactive FAQ accordions
    - Waitlist signup flow with automated routing to `/thank-you`
@@ -20,7 +19,7 @@ A complete, production-ready solution featuring:
 
 ## Quickstart
 
-### 1. Database Setup (Supabase / Postgres)
+### 1. Database Setup (Local run on SQlite)
 Execute `supabase/schema.sql` in your Supabase SQL editor or PostgreSQL terminal. It establishes `waitlist`, `contacts`, and `site_analytics` tables with strict RLS policies (insert allowed, public read denied).
 
 ### 2. Backend (FastAPI)
