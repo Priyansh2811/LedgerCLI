@@ -1,4 +1,4 @@
-# LedgerCLI & Web Portal (Full Deployable Stack)
+# LedgerCLI & Web Portal 
 
 A complete, production-ready solution featuring:
 1. **LedgerCLI Engine (`cli/`)**: A rich-terminal, SQLite-backed CLI expense tracker with natural language quick-add, budget thresholds, categorization, and reporting.
@@ -10,7 +10,6 @@ A complete, production-ready solution featuring:
    - 5+ interactive FAQ accordions
    - Waitlist signup flow with automated routing to `/thank-you`
    - Dedicated `/contact` inquiry page
-   - Custom 404 page (`not-found.html`)
    - Persistent GDPR/ePrivacy compliant Cookie Consent banner
    - Automated zero-dependency telemetry/analytics logging
    - Full SEO optimization (meta tags, OpenGraph, Twitter cards)
