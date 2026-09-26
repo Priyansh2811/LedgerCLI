@@ -5,7 +5,6 @@ A complete, production-ready solution featuring:
 2. **Backend API (`backend/`)**: FastAPI server connected to Supabase/PostgreSQL with Row Level Security (RLS) enforcement, validation schemas, and REST endpoints for waitlist, contact submissions, and site analytics telemetry.
 3. **Frontend Web Portal (`frontend/`)**: Modern responsive web application featuring:
 4. **Supabase Migration (`supabase/schema.sql`)**: PostgreSQL DDL + RLS security policies on all tables.
-5. **Docker Compose & Deployment configs**: One-command launch with `docker-compose up`.
 
 ---
 
