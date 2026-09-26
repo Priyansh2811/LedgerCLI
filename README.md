@@ -4,14 +4,6 @@ A complete, production-ready solution featuring:
 1. **LedgerCLI Engine (`cli/`)**: A rich-terminal, SQLite-backed CLI expense tracker with natural language quick-add, budget thresholds, categorization, and reporting.
 2. **Backend API (`backend/`)**: FastAPI server connected to Supabase/PostgreSQL with Row Level Security (RLS) enforcement, validation schemas, and REST endpoints for waitlist, contact submissions, and site analytics telemetry.
 3. **Frontend Web Portal (`frontend/`)**: Modern responsive web application featuring:
-   - Sticky navigation bar with unique SVG logo
-   - Hero section with high-converting CTA above the fold
-   - 5+ interactive FAQ accordions
-   - Waitlist signup flow with automated routing to `/thank-you`
-   - Dedicated `/contact` inquiry page
-   - Persistent GDPR/ePrivacy compliant Cookie Consent banner
-   - Automated zero-dependency telemetry/analytics logging
-   - Full SEO optimization (meta tags, OpenGraph, Twitter cards)
 4. **Supabase Migration (`supabase/schema.sql`)**: PostgreSQL DDL + RLS security policies on all tables.
 5. **Docker Compose & Deployment configs**: One-command launch with `docker-compose up`.
 
